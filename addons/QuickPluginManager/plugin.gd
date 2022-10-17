@@ -23,9 +23,6 @@ const PLUGIN_SELF_NAME = "QuickPluginManager"
 var _plugin_menu_btn = MenuButton.new()
 var _plugins_menu = _plugin_menu_btn.get_popup()
 
-var _plugin_active_menu_btn = MenuButton.new()
-var _plugins_active_menu = _plugin_active_menu_btn.get_popup()
-
 var _plugins_data = {}
 var _menu_items_idx = 0
 
