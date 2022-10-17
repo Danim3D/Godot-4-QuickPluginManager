@@ -1,4 +1,4 @@
-# QuickPluginManager
+# Quick Plugin Manager - addon for Godot 4
 
 This version is updated to work with Godot 4
 
