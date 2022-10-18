@@ -8,4 +8,4 @@ forked from original Godot 3.x version https://github.com/mastermarkus/QuickPlug
 - The button appear in upper-right corner (when you activate the plugin)
 - There you can select plugin(s) to enable/disable
 
-![Image]([http://i.imgur.com/zTONrOD.jpg](https://github.com/Danim3D/Godot-4-QuickPluginManager/blob/master/QuickPluginManager.png?raw=true))
+![Image](https://github.com/Danim3D/Godot-4-QuickPluginManager/blob/master/QuickPluginManager.png)
