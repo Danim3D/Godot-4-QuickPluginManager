@@ -76,21 +76,22 @@ func _populate_menu():
 		for addon_name in addons_list:
 			var addon_cfg_path: Array = []
 			addon_cfg_path = get_list_path_of_files_with_ext("res://addons/"+addon_name+"/", ".cfg")
-#			print(addon_cfg_path)
+			if addon_cfg_path.size() > 0:
+#				print(addon_cfg_path)
 
-			if addon_cfg_path != null:
-				var conf = ConfigFile.new()
-				conf.load(addon_cfg_path[0]) #take the first .cfg file found in each addon directory
-				var plugin_name = str(conf.get_value("plugin", "name"))
-				var plugin_info = { "plugin_folder":addon_name, "menu_item_index":_menu_items_idx }
+				if addon_cfg_path != null:
+					var conf = ConfigFile.new()
+					conf.load(addon_cfg_path[0]) #take the first .cfg file found in each addon directory
+					var plugin_name = str(conf.get_value("plugin", "name"))
+					var plugin_info = { "plugin_folder":addon_name, "menu_item_index":_menu_items_idx }
 
-				var isPluginEnabled = get_editor_interface().is_plugin_enabled(addon_name)
+					var isPluginEnabled = get_editor_interface().is_plugin_enabled(addon_name)
 
-				if plugin_name != PLUGIN_SELF_NAME:
-					_plugins_menu.add_check_item(plugin_name)
-					_plugins_menu.set_item_checked(_menu_items_idx, isPluginEnabled)
-					_plugins_data[plugin_name] = plugin_info
-					_menu_items_idx += 1
+					if plugin_name != PLUGIN_SELF_NAME:
+						_plugins_menu.add_check_item(plugin_name)
+						_plugins_menu.set_item_checked(_menu_items_idx, isPluginEnabled)
+						_plugins_data[plugin_name] = plugin_info
+						_menu_items_idx += 1
 		
 		#no need to increment "_menu_items_idx" as we already did it above
 		#add plugin itself as last item to menu
