@@ -76,10 +76,19 @@ func _populate_menu():
 		for addon_name in addons_list:
 			var addon_cfg_path: Array = []
 			addon_cfg_path = get_list_path_of_files_with_ext("res://addons/"+addon_name+"/", ".cfg")
-			if addon_cfg_path.size() > 0:
-#				print(addon_cfg_path)
-
-				if addon_cfg_path != null:
+			if addon_cfg_path != null:
+				#If more than one cfg file exist, only keep plugin.cfg
+				if addon_cfg_path.size() > 1:
+					var idx = 0
+					for cfg in addon_cfg_path:
+						if cfg.right(10) != "plugin.cfg":
+							addon_cfg_path.remove_at(idx)
+						idx += 1
+			
+				if addon_cfg_path != null and addon_cfg_path.size() > 0:
+#					print(addon_cfg_path)
+				
+					#Add addon to _plugins_menu
 					var conf = ConfigFile.new()
 					conf.load(addon_cfg_path[0]) #take the first .cfg file found in each addon directory
 					var plugin_name = str(conf.get_value("plugin", "name"))
